@@ -1,7 +1,7 @@
 
 ## Configuring syslog on one of the Docker instances
 
-#### Configure syslog.
+### Configure syslog.
 
 You will need to open rsyslog.conf and make a few changes:
 
@@ -24,7 +24,7 @@ $UDPServerRun 514
 ~~~~
 
 
-#### Configure Docker to use syslog.
+### Configure Docker to use syslog.
 
 Create the daemon.json file.
 
@@ -44,7 +44,7 @@ Add the following content.
 }
 ~~~~
 
-#### Create a container using syslog.
+### Create a container using syslog.
 
 Enable and start the Dockere service.
 
@@ -59,7 +59,7 @@ Create a container called syslog-logging using the httpd image.
 docker container run -d --name syslog-logging httpd
 ~~~~
 
-#### Create a container using a JSON file.
+### Create a container using a JSON file.
 
 Create a container that uses the JSON file for logging.
 
@@ -67,7 +67,7 @@ Create a container that uses the JSON file for logging.
 docker container run -d --name json-logging --log-driver json-file httpd
 ~~~~
 
-## Verify that the `syslog-logging` container is sending its logs to syslog.
+### Verify that the `syslog-logging` container is sending its logs to syslog.
 
 Make sure that the syslog-logging container is logging to syslog by checking the message log file:
 
@@ -75,7 +75,7 @@ Make sure that the syslog-logging container is logging to syslog by checking the
 tail /var/log/messages
 ~~~~
 
-#### Verify that the `json-logging` container is sending its logs to the JSON file.
+### Verify that the `json-logging` container is sending its logs to the JSON file.
 
 Execute docker logs for the json-logging container.
 
