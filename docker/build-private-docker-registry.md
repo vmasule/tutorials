@@ -1,13 +1,13 @@
 ## Set up the private docker registry.
 
-#### Create an htpasswd file containing the login credentials for the initial account.
+#### Create an `htpasswd` file containing the login credentials for the initial account.
 
 ~~~~
 mkdir -p ~/registry/auth
 docker run --entrypoint htpasswd \
   registry:2 -Bbn docker d0ck3rrU73z > ~/registry/auth/htpasswd
 ~~~~
-#### Create a self-signed certificate for the registry. For common name, enter the hostname of the registry server, which is ip-10-0-1-101. For the other prompts, just hit enter to accept the default.
+#### Create a self-signed certificate for the registry. For common name, enter the hostname of the registry server, which is `ip-10-0-1-101`. For the other prompts, just hit enter to accept the default.
 
 ~~~~
 mkdir -p ~/registry/certs
@@ -45,14 +45,14 @@ curl -k https://localhost:443
 echo $HOSTNAME
 ~~~~
 
-#### Add the registry's public self-signed certificate to /etc/docker/certs.d. The scp command is copying the file from the registry server to the workstation. The password is the normal cloud_user password provided by the lab.
+#### Add the registry's public self-signed certificate to `/etc/docker/certs.d`. The scp command is copying the file from the registry server to the workstation. The password is the normal `cloud_user` password provided by the lab.
 
 ~~~~
 sudo mkdir -p /etc/docker/certs.d/ip-10-0-1-101:443
 sudo scp cloud_user@ip-10-0-1-101:/home/cloud_user/registry/certs/domain.crt /etc/docker/certs.d/ip-10-0-1-101:443
 ~~~~
 
-#### Log in to the private registry from the workstation. The credentials should be username docker and password d0ck3rrU73z.
+#### Log in to the private registry from the workstation. The credentials should be username docker and password `d0ck3rrU73z`.
 
 ~~~~
 docker login ip-10-0-1-101:443
