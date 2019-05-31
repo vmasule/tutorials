@@ -1,5 +1,5 @@
 
-## configuring syslog on one of the Docker instances
+## Configuring syslog on one of the Docker instances
 
 #### Configure syslog.
 
